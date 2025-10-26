@@ -48,24 +48,24 @@ playRound(human, computer);
   let computerScore = 0;
 
   function playRound(humanChoice, computerChoice) {
-  let span = document.createElement("p");
+  let p = document.createElement("p");
 
   if(humanChoice === computerChoice ) {
-    span.textContent = `Draw! You've chose ${humanChoice} and the computer ${computerChoice}.`
+    p.textContent = `Draw! You've chose ${humanChoice} and the computer ${computerChoice}.`
   } else if (
     humanChoice === 'rock' && computerChoice === 'scissors' || 
     humanChoice === 'paper' && computerChoice === 'rock' ||
     humanChoice === 'scissors' && computerChoice === 'paper') {
-      span.textContent = `You've won the round! You chose ${humanChoice} and the computer ${computerChoice}.`
+      p.textContent = `You've won the round! You chose ${humanChoice} and the computer ${computerChoice}.`
       humanScore++;
       placarHuman.textContent = humanScore;
     } else {
-       span.textContent = `You've lost the round! You chose ${humanChoice} and the computer ${computerChoice}.`
+       p.textContent = `You've lost the round! You chose ${humanChoice} and the computer ${computerChoice}.`
        computerScore++;
        placarCPU.textContent = computerScore;
     }
 
-    result.appendChild(span);
+    result.appendChild(p);
     result.scrollTop = result.scrollHeight; 
 
     const finalMsg = document.createElement("p");
