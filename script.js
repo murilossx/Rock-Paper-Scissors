@@ -8,68 +8,83 @@ Criar uma função playRound com os parametros de humanChoice e computerChoice
 Fazer o input do usuário ser case-insensitive
 No final o jogo vai ser jogado 5 rounds
 Criar uma função playGame
-
+teste
 */
 let options = ["rock", "paper", "scissors"];
+const humanButtons = document.querySelectorAll(".imgBtn");
+const result = document.querySelector("#logContainer");
+const iniciar = document.querySelector("#iniciar");
+const placarHuman = document.querySelector(".placarHuman");
+const placarCPU = document.querySelector(".placarCPU");
 
 function getComputerChoice() {
   return options[Math.floor(Math.random() * options.length)];
 }
 
-function humanChoice() {
-  let str = prompt("Choose between Rock Papers Scissors");
-  return str.toLowerCase();
-}
+humanButtons.forEach(btn => btn.disabled = true);
 
-function playGame() {
-  let humanScore = 0;
+
+
+iniciar.addEventListener('click', (e) => {
+ iniciar.disabled = true;
+ humanButtons.forEach(btn => btn.disabled = false);
+ result.innerHTML= "Jogo iniciado! Escolha pedra, papel ou tesoura!";
+   humanScore = 0;
+    computerScore = 0;
+    placarHuman.textContent = "0";
+    placarCPU.textContent = "0";
+})
+
+humanButtons.forEach((choice) => {
+choice.addEventListener('click', (e) => {
+const human = e.target.id;
+const computer = getComputerChoice();
+playRound(human, computer);
+})
+})
+
+
+  let humanScore = 0; 
   let computerScore = 0;
 
   function playRound(humanChoice, computerChoice) {
-    if (humanChoice == "rock" && computerChoice == "paper") {
-      computerScore++;
-      console.log(
-        `You choose Rock and the computer choose Paper. You lost the round. Score: You: ${humanScore} Computer: ${computerScore}`
-      );
-    } else if (humanChoice == "rock" && computerChoice == "scissors") {
-      humanScore++;
-      console.log(
-        `You choose Rock and the computer choose Scissors. You won the round. Score: You: ${humanScore} Computer: ${computerScore}`
-      );
-    } else if (humanChoice == "paper" && computerChoice == "rock") {
-      humanScore++;
-      console.log(
-        `You choose Paper and the computer choose Rock. You won the round. Score: You: ${humanScore} Computer: ${computerScore}`
-      );
-    } else if (humanChoice == "paper" && computerChoice == "scissors") {
-      computerScore++;
-      console.log(
-        `You choose Paper and the computer choose Scissors. You lost the round. Score: You: ${humanScore} Computer: ${computerScore}`
-      );
-    } else if (humanChoice == "scissors" && computerChoice == "rock") {
-      computerScore++;
-      console.log(
-        `You choose Scissors and the computer choose Rock. You lost the round. Score: You: ${humanScore} Computer: ${computerScore}`
-      );
-    } else if (humanChoice == "scissors" && computerChoice == "paper") {
-      humanScore++;
-      console.log(
-        `You choose Scissors and the computer choose Paper. You won the round. Score: You: ${humanScore} Computer: ${computerScore}`
-      );
-    } else {
-      console.log("It's a tie!");
-    }
-  }
-  for (let i = 0; i < 5; i++) {
-    const humanSelection = humanChoice();
-    const computerSelection = getComputerChoice();
-    playRound(humanSelection, computerSelection);
-  }
-  if (humanScore > computerScore) {
-    console.log("You've won!!");
-  } else {
-    console.log("The computer won :(");
-  }
-}
+  let span = document.createElement("p");
 
-playGame();
+  if(humanChoice === computerChoice ) {
+    span.textContent = `Draw! You've chose ${humanChoice} and the computer ${computerChoice}.`
+  } else if (
+    humanChoice === 'rock' && computerChoice === 'scissors' || 
+    humanChoice === 'paper' && computerChoice === 'rock' ||
+    humanChoice === 'scissors' && computerChoice === 'paper') {
+      span.textContent = `You've won the round! You chose ${humanChoice} and the computer ${computerChoice}.`
+      humanScore++;
+      placarHuman.textContent = humanScore;
+    } else {
+       span.textContent = `You've lost the round! You chose ${humanChoice} and the computer ${computerChoice}.`
+       computerScore++;
+       placarCPU.textContent = computerScore;
+    }
+
+    result.appendChild(span);
+    result.scrollTop = result.scrollHeight; 
+
+    const finalMsg = document.createElement("p");
+
+    if(humanScore === 5 || computerScore === 5) {
+    if(humanScore === 5) {
+      finalMsg.textContent = "You've won the game!!!!!"
+      finalMsg.style.color = "blue";
+    
+    } else if(computerScore === 5) {
+      finalMsg.textContent = "You lost the game!!!!!"
+      finalMsg.style.color = "red"; 
+    }
+    result.appendChild(finalMsg);
+
+    humanButtons.forEach(btn => btn.disabled = true);
+    iniciar.disabled = false;
+  }
+  }
+
+
+

@@ -4,9 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script> 
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div id="fullContainer">
+    <div id="playerContainer">
+    <span class="textPlayerCPU">VOCÊ</span>
+    <div class="placarClass"><span class="placarHuman">0</span></div>
+    </div>
+    <div id="midContainer">
+        <div class="imagensContainer">
+            <button class="imgBtn"><img id="rock" class="imagens" src="https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTEyL2pvYjk1OS1lbGVtZW50LWItMDEzNl8yLmpwZw.jpg"></button>
+                <button class="imgBtn"><img id="paper" class="imagens" src="https://www.pngfind.com/pngs/m/627-6273504_rock-paper-scissors-paper-rock-scissors-png-transparent.png"></button>
+                    <button class="imgBtn"><img id="scissors" class="imagens" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPJt40RU4NdEHBc1_rmnFGt6bKDgMGReOGJA&s"></button>
+        </div>
+         <button id="iniciar">Iniciar</button>
+         <div id="logContainer"></div>
+    </div>
+    <div id="cpuContainer"><span class="textPlayerCPU">CPU</span>
+        <div class="placarClass"><span class="placarCPU">0</span></div>
+    </div>
+</div>
 </body>
 </html>

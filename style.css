@@ -1,0 +1,104 @@
+body {
+    background-color: #c0eeee;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+
+#fullContainer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    width: 90%;
+    max-width: 1200px;
+    gap: 20px;
+}
+
+#playerContainer, #cpuContainer {
+    text-align: center;
+}
+
+.textPlayerCPU {
+    font-size: 40px;
+    color: #1a237e;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.placarClass {
+    font-size: 60px;
+    color: #1a237e;
+    margin-top: 20px;
+}
+
+#midContainer {
+    text-align: center;
+    border: 2px solid #4242c4;
+    border-radius: 15px;
+    background-color: #659999;
+    padding: 20px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.imagensContainer {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.imgBtn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.imgBtn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+
+.imagens {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+#iniciar {
+    padding: 10px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    background-color: #1a237e;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+#iniciar:hover {
+    background-color: #3949ab;
+    transform: scale(1.05);
+}
+
+/* Log do jogo */
+#logContainer {
+    max-height: 200px; 
+    overflow-y: auto;   
+    padding: 10px;
+    background-color: #568383;
+    color: white;        
+    border-radius: 8px;
+    width: 100%;
+    font-size: 16px;
+    text-align: left;
+}
